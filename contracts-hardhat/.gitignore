@@ -6,3 +6,5 @@ coverage.json
 cache
 artifacts
 
+.DS_Store
+
