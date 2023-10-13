@@ -109,13 +109,14 @@ interface ISecretNFT is IERC721 {
      * @param _tokenId The ID of the token to get the URI of
      * @return encryptedPrivateURI The encrypted private URI of the token
      * @return hashPrivateURI The hash of the private URI of the token
+     * @return originalHashPrivateURI The original hash of the private URI of the token
      */
     function privateTokenURI(
         uint256 _tokenId
     )
         external
         view
-        returns (bytes memory encryptedPrivateURI, bytes32 hashPrivateURI);
+        returns (bytes memory encryptedPrivateURI, bytes32 hashPrivateURI, bytes32 originalHashPrivateURI);
 
     /**
      * @notice Transfers the ownership of a token from one address to another address.
