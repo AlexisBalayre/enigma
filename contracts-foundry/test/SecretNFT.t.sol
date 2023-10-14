@@ -72,6 +72,37 @@ contract SecretNFTTest is Test {
         assertEq(hashPrivateURI, "newHashPrivateURI");
         assertEq(originalHashPrivateURI, "hashPrivateURI");
     }
+
+    function testSendEncryptedPrivateURI() public {
+        secretNFT.mint(ISecretNFT.MintInputData({ to: address(5), hashPrivateURI: "hashPrivateURI", encryptedPrivateURI: "encryptedPrivateURI", publicURI: "publicURI" }));
+        assertEq(secretNFT.balanceOf(address(5)), 1);
+        vm.expectRevert(); // Next line should fail
+        secretNFT.safeTransferFrom("newEncryptedPrivateURI2", address(5), address(6), 1);
+        vm.startPrank(address(5)); // Change the caller to address(5) 
+        secretNFT.safeTransferFrom("newEncryptedPrivateURI2", address(5), address(6), 1);
+        assertEq(secretNFT.balanceOf(address(5)), 0);
+        assertEq(secretNFT.balanceOf(address(6)), 1);
+        (bytes memory encryptedPrivateURI, bytes32 hashPrivateURI, bytes32 originalHashPrivateURI) = secretNFT.privateTokenURI(1);
+        assertEq(encryptedPrivateURI, "newEncryptedPrivateURI2");
+        assertEq(hashPrivateURI, "hashPrivateURI");
+        assertEq(originalHashPrivateURI, "hashPrivateURI");
+    }
+
+
+    function testSendEncryptedPrivateURIMethod2() public {
+        secretNFT.mint(ISecretNFT.MintInputData({ to: address(5), hashPrivateURI: "hashPrivateURI", encryptedPrivateURI: "encryptedPrivateURI", publicURI: "publicURI" }));
+        assertEq(secretNFT.balanceOf(address(5)), 1);
+        vm.expectRevert(); // Next line should fail
+        secretNFT.transferFrom("newEncryptedPrivateURI2", address(5), address(6), 1);
+        vm.startPrank(address(5)); // Change the caller to address(5) 
+        secretNFT.transferFrom("newEncryptedPrivateURI2", address(5), address(6), 1);
+        assertEq(secretNFT.balanceOf(address(5)), 0);
+        assertEq(secretNFT.balanceOf(address(6)), 1);
+        (bytes memory encryptedPrivateURI, bytes32 hashPrivateURI, bytes32 originalHashPrivateURI) = secretNFT.privateTokenURI(1);
+        assertEq(encryptedPrivateURI, "newEncryptedPrivateURI2");
+        assertEq(hashPrivateURI, "hashPrivateURI");
+        assertEq(originalHashPrivateURI, "hashPrivateURI");
+    }
 }
 
 
