@@ -91,7 +91,7 @@ interface ISecretNFT is IERC721 {
     ) external;
 
     /**
-     * @dev Returns the metadata of the token.
+     * @notice Returns the metadata of the token.
      * @param _tokenId The ID of the token to get the metadata of.
      * @return _metadata The metadata of the token.
      */
