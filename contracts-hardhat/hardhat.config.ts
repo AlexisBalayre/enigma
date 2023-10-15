@@ -8,13 +8,13 @@ import "solidity-docgen";
 dotenvConfig();
 
 function getNetworks(): NetworksUserConfig {
-  if (process.env.POLYGON_URL && process.env.PRIVATE_KEY) {
+  if (process.env.RPC_URL_MUMBAI && process.env.PRIVATE_KEY) {
     const accounts = [`0x${process.env.PRIVATE_KEY}`];
 
     return {
-      polygon: {
-        url: process.env.POLYGON_URL,
-        chainId: 137,
+      mumbai: {
+        url: process.env.RPC_URL_MUMBAI,
+        chainId: 80001,
         accounts,
       },
     };

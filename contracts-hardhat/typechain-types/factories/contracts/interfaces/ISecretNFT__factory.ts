@@ -457,6 +457,11 @@ const _abi = [
         name: "hashPrivateURI",
         type: "bytes32",
       },
+      {
+        internalType: "bytes32",
+        name: "originalHashPrivateURI",
+        type: "bytes32",
+      },
     ],
     stateMutability: "view",
     type: "function",

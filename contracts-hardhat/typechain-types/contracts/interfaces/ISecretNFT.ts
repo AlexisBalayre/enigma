@@ -398,7 +398,11 @@ export interface ISecretNFT extends BaseContract {
   privateTokenURI: TypedContractMethod<
     [_tokenId: BigNumberish],
     [
-      [string, string] & { encryptedPrivateURI: string; hashPrivateURI: string }
+      [string, string, string] & {
+        encryptedPrivateURI: string;
+        hashPrivateURI: string;
+        originalHashPrivateURI: string;
+      }
     ],
     "view"
   >;
@@ -521,7 +525,11 @@ export interface ISecretNFT extends BaseContract {
   ): TypedContractMethod<
     [_tokenId: BigNumberish],
     [
-      [string, string] & { encryptedPrivateURI: string; hashPrivateURI: string }
+      [string, string, string] & {
+        encryptedPrivateURI: string;
+        hashPrivateURI: string;
+        originalHashPrivateURI: string;
+      }
     ],
     "view"
   >;

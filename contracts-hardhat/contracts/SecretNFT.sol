@@ -217,13 +217,14 @@ contract SecretNFT is ISecretNFT, ERC721Upgradeable {
      * @param _tokenId The ID of the token to get the URI of
      * @return encryptedPrivateURI The encrypted private URI of the token
      * @return hashPrivateURI The hash of the private URI of the token
+     * @return originalHashPrivateURI The original hash of the private URI of the token
      */
     function privateTokenURI(
         uint256 _tokenId
     )
         external
         view
-        returns (bytes memory encryptedPrivateURI, bytes32 hashPrivateURI)
+        returns (bytes memory encryptedPrivateURI, bytes32 hashPrivateURI, bytes32 originalHashPrivateURI)
     {
         // Reverts if the token does not exist.
         if (_ownerOf(_tokenId) == address(0)) {
@@ -231,5 +232,6 @@ contract SecretNFT is ISecretNFT, ERC721Upgradeable {
         }
         encryptedPrivateURI = tokenMetadata[_tokenId].encryptedPrivateURI;
         hashPrivateURI = tokenMetadata[_tokenId].hashPrivateURI;
+        originalHashPrivateURI = tokenMetadata[_tokenId].originalHashPrivateURI;
     }
 }
