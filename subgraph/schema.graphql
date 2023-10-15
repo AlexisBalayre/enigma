@@ -1,9 +1,0 @@
-type NewCollectionDeployed @entity(immutable: true) {
-  id: Bytes!
-  collectionAddress: Bytes! # address
-  name: String! # string
-  symbol: String! # string
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
