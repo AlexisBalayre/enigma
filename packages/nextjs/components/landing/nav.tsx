@@ -4,9 +4,11 @@ import Link from "next/link";
 export function LandingNav() {
   return (
     <nav className="fixed w-full z-20">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-6 mt-5 rounded-3xl bg-white/10 backdrop-blur-md shadow-md shadow-gray-300/40">
+      <div className="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto py-6 px-12 mt-5 rounded-3xl bg-white/30 backdrop-blur-md border border-slate-500 overflow-clip">
+        <div className="absolute top-[-30px] left-0 w-full h-8 bg-fuchsia-400/60 rounded-full filter blur-[25px]"></div>
+        <div className="absolute top-[90px] left-0 w-full h-8 bg-sky-400/60 rounded-full filter blur-[25px]"></div>
         <Link href="/" className="flex items-center">
-          <span className="self-center text-2xl font-semibold whitespace-nowrap">Enigma Logo</span>
+          <span className="self-center text-2xl text-white font-semibold whitespace-nowrap">Enigma Logo</span>
         </Link>
         <div className="flex order-2 text-md">
           <button
@@ -56,7 +58,7 @@ export function LandingNav() {
                 href="#"
                 className="block rounded text-white hover:bg-gradient-to-r from-sky-400 to-fuchsia-600 hover:bg-clip-text hover:text-transparent"
               >
-                Connect
+                Community
               </a>
             </li>
           </ul>
