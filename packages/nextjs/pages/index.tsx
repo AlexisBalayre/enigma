@@ -5,7 +5,10 @@ import { ArrowRightIcon } from "@heroicons/react/24/outline";
 import { CheckIcon } from "@heroicons/react/24/solid";
 import { MetaHeader } from "~~/components/MetaHeader";
 import { Blur } from "~~/components/assets/Blur";
+import { ExampleNFTS } from "~~/components/landing/Examples";
 import { LandingNav } from "~~/components/landing/nav";
+import BLOCK1 from "~~/public/assets/block1.png";
+import CAT from "~~/public/assets/cat.png";
 import FEATUREFORK from "~~/public/assets/featurefork.png";
 import HEADERHERO from "~~/public/assets/header.png";
 
@@ -18,7 +21,7 @@ const Home: NextPage = () => {
         className={`absolute overflow-hidden -z-1 top-40 left-40 w-96 h-96 bg-fuchsia-400/30 rounded-full filter blur-[200px]`}
       ></div>
       <div
-        className={`absolute overflow-hidden -z-1 bottom-10 right-10 w-96 h-96 bg-sky-500/50 rounded-full filter blur-[200px]`}
+        className={`absolute overflow-hidden -z-1 bottom-0 right-40 w-96 h-96 bg-sky-500/50 rounded-full filter blur-[200px]`}
       ></div>
       <div className="absolute top-40 w-full">
         <div className="flex flex-col items-center justify-center">
@@ -44,7 +47,7 @@ const Home: NextPage = () => {
             <Image src={HEADERHERO} alt="enigma-hero" />
           </div>
           {/* next section */}
-          <div className="bg-sky-500 shadow-xl shadow-sky-500/30 py-8 px-12 rounded-3xl shadow-white/40 flex justify-between items-center space-x-12 text-white font-semibold text-3xl mt-24">
+          <div className="bg-sky-500 shadow-xl shadow-sky-500/20 py-8 px-12 rounded-3xl shadow-white/40 flex justify-between items-center space-x-12 text-white font-semibold text-3xl mt-24">
             <div className="flex flex-row items-center">
               <CheckIcon className="h-12 w-auto" />
               <span className="whitespace-no-wrap">Multi-chain Support</span>
@@ -133,14 +136,58 @@ const Home: NextPage = () => {
             </div>
           </div>
           {/* next section */}
+          <div
+            className={`absolute overflow-hidden -z-1 top-[1500px] left-[280px] w-[900px] h-28 bg-sky-500/50 rounded-full filter blur-[180px]`}
+          ></div>
           <div className="w-full bg-enigma/90 backdrop-blur-md py-16 my-20 z-10">
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center space-y-12">
               <h2 className={`text-4xl font-extrabold text-white`}>View Example Secret NFTs on Chain</h2>
+              <ExampleNFTS />
             </div>
           </div>
           <div
-            className={`absolute overflow-hidden -z-1 bottom-10 right-25 w-[900px] h-28 bg-fuchsia-400/50 rounded-full filter blur-[180px]`}
+            className={`absolute overflow-hidden -z-1 top-[1900px] right-25 w-[900px] h-28 bg-fuchsia-400/50 rounded-full filter blur-[180px]`}
           ></div>
+          <Image src={BLOCK1} alt={"a block"} width={120} className="absolute z-20 top-[1970px]" />
+          {/* next section */}
+          <div
+            className={`w-8/12 flex justify-center items-center mb-24 mt-10 relative rounded-xl bg-slate-400/30 bg-blur-md p-16 overflow-clip`}
+          >
+            <div className="flex flex-row items-center space-x-8">
+              <div className={`block`}>
+                <div className="absolute top-[0px] left-0 w-full h-8 bg-fuchsia-400/60 rounded-full filter blur-[35px]"></div>
+                <div className="absolute top-[260px] left-0 w-full h-8 bg-sky-400/60 rounded-full filter blur-[35px]"></div>
+                <h2 className={`text-4xl font-extrabold text-white`}>Join The Community</h2>
+                <div className="flex flex-row space-x-8">
+                  <div className="flex order-2 text-md pt-4">
+                    <button
+                      type="button"
+                      className="text-lg text-white bg-gradient-to-b from-sky-400 to-fuchsia-600 focus:ring-4 focus:outline-none focus:ring-blue-700 font-medium rounded-xl py-4 px-10 text-center mr-0"
+                    >
+                      Discord
+                    </button>
+                  </div>
+                  <div className="flex order-2 text-md pt-4">
+                    <button
+                      type="button"
+                      className="text-lg text-white bg-gradient-to-b from-sky-400 to-fuchsia-600 focus:ring-4 focus:outline-none focus:ring-blue-700 font-medium rounded-xl py-4 px-10 text-center mr-0"
+                    >
+                      Telegram
+                    </button>
+                  </div>
+                  <div className="flex order-2 text-md pt-4">
+                    <button
+                      type="button"
+                      className="text-lg text-white bg-gradient-to-b from-sky-400 to-fuchsia-600 focus:ring-4 focus:outline-none focus:ring-blue-700 font-medium rounded-xl py-4 px-10 text-center mr-0"
+                    >
+                      ETHGlobal Page
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <Image src={CAT} alt={"sign up cat"} width={150} />
+            </div>
+          </div>
         </div>
       </div>
     </div>

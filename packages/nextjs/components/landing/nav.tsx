@@ -50,14 +50,6 @@ export function LandingNav() {
                 href="#"
                 className="block rounded text-white hover:bg-gradient-to-r from-sky-400 to-fuchsia-600 hover:bg-clip-text hover:text-transparent"
               >
-                Use Cases
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="block rounded text-white hover:bg-gradient-to-r from-sky-400 to-fuchsia-600 hover:bg-clip-text hover:text-transparent"
-              >
                 Community
               </a>
             </li>
