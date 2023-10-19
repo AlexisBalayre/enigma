@@ -1,10 +1,10 @@
 import { AppNavWrapper } from "~~/components/app/Nav";
 
-export default function HomeDashboard() {
+export default function Mint() {
   return (
     <AppNavWrapper>
       <div className="text-white">
-        hi, the dashboard should go here
+        hi, the minting should go here
       </div>
     </AppNavWrapper>
   );

@@ -1,10 +1,10 @@
 import { AppNavWrapper } from "~~/components/app/Nav";
 
-export default function HomeDashboard() {
+export default function Chatbot() {
   return (
     <AppNavWrapper>
       <div className="text-white">
-        hi, the dashboard should go here
+        hi, the chat stuff should go here
       </div>
     </AppNavWrapper>
   );

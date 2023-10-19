@@ -1,10 +1,10 @@
 import { AppNavWrapper } from "~~/components/app/Nav";
 
-export default function HomeDashboard() {
+export default function Unlock() {
   return (
     <AppNavWrapper>
       <div className="text-white">
-        hi, the dashboard should go here
+        hi, the unlocking stuff should go here
       </div>
     </AppNavWrapper>
   );
