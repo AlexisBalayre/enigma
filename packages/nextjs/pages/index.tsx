@@ -1,19 +1,22 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import type { NextPage } from "next";
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
 import { CheckIcon } from "@heroicons/react/24/solid";
-import { MetaHeader } from "~~/components/MetaHeader";
-import { Blur } from "~~/components/assets/Blur";
 import { ExampleNFTS } from "~~/components/landing/Examples";
 import { LandingNav } from "~~/components/landing/nav";
 import BLOCK1 from "~~/public/assets/block1.png";
 import CAT from "~~/public/assets/cat.png";
-import FEATUREFORK from "~~/public/assets/featurefork.png";
 import HEADERHERO from "~~/public/assets/header.png";
 
 // TODO: abstract these to components for ez changes
 const Home: NextPage = () => {
+  const router = useRouter();
+  const handleClick = (e: React.MouseEvent<HTMLElement>) => {
+    e.stopPropagation();
+    router.push("/app");
+  };
   return (
     <div className="">
       <LandingNav />
@@ -26,7 +29,7 @@ const Home: NextPage = () => {
       <div className="absolute top-40 w-full">
         <div className="flex flex-col items-center justify-center">
           {/* next section */}
-          <div className={`flex flex-row z-2 items-center justify-center pt-10 space-x-12`}>
+          <div id="home" className={`flex flex-row z-2 items-center justify-center pt-10 space-x-12`}>
             <div className="space-y-2">
               <h3 className={`text-2xl font-bold text-white`}>Create Secret NFTs</h3>
               <h1 className={`text-6xl font-extrabold text-white max-w-lg`}>Hero Title Lorem Ipsum...</h1>
@@ -37,6 +40,7 @@ const Home: NextPage = () => {
               </p>
               <div className="flex order-2 text-md pt-4">
                 <button
+                  onClick={handleClick}
                   type="button"
                   className="text-xl text-white bg-gradient-to-b from-sky-400 to-fuchsia-600 focus:ring-4 focus:outline-none focus:ring-blue-700 font-bold rounded-xl py-5 px-12 text-center mr-0"
                 >
@@ -62,11 +66,12 @@ const Home: NextPage = () => {
             </div>
           </div>
           {/* next section */}
-          <div className={`flex flex-row pt-24 space-x-12`}>
+          <div id="features" className={`flex flex-row pt-24 space-x-12`}>
             <div className={`flex flex-col`}>
               <h2 className={`text-4xl font-extrabold text-white`}>Features of Enigma</h2>
               <div className="flex order-2 text-md pt-4">
                 <button
+                  onClick={handleClick}
                   type="button"
                   className="text-lg text-white bg-gradient-to-b from-sky-400 to-fuchsia-600 focus:ring-4 focus:outline-none focus:ring-blue-700 font-medium rounded-xl py-4 px-10 text-center mr-0"
                 >
@@ -139,7 +144,7 @@ const Home: NextPage = () => {
           <div
             className={`absolute overflow-hidden -z-1 top-[1500px] left-[280px] w-[900px] h-28 bg-sky-500/50 rounded-full filter blur-[180px]`}
           ></div>
-          <div className="w-full bg-enigma/90 backdrop-blur-md py-16 my-20 z-10">
+          <div id="view" className="w-full bg-enigma/90 backdrop-blur-md py-16 my-20 z-10">
             <div className="flex flex-col items-center space-y-12">
               <h2 className={`text-4xl font-extrabold text-white`}>View Example Secret NFTs on Chain</h2>
               <ExampleNFTS />
@@ -151,6 +156,7 @@ const Home: NextPage = () => {
           <Image src={BLOCK1} alt={"a block"} width={120} className="absolute z-20 top-[1970px]" />
           {/* next section */}
           <div
+            id="community"
             className={`w-8/12 flex justify-center items-center mb-24 mt-10 relative rounded-xl bg-slate-400/30 bg-blur-md p-16 overflow-clip`}
           >
             <div className="flex flex-row items-center space-x-8">
