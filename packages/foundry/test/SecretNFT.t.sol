@@ -39,18 +39,18 @@ contract SecretNFTTest is Test {
         vm.startPrank(address(1));
         // Next line should fail
         vm.expectRevert();
-        secretNFT.mint(ISecretNFT.MintInputData({ to: address(3), hashPrivateURI: "hashPrivateURI", encryptedPrivateURI: "encryptedPrivateURI", publicURI: "publicURI" }));
+        secretNFT.mint(ISecretNFT.MintInputData({ to: address(3), hashPrivateURI: "hashPrivateURI", encryptedPrivateURI: "encryptedPrivateURI", publicURI: "publicURI", tokenId: 0}));
         // Stop the prank - revert to the original caller
         vm.stopPrank();
         // Next line should pass
-        secretNFT.mint(ISecretNFT.MintInputData({ to: address(3), hashPrivateURI: "hashPrivateURI", encryptedPrivateURI: "encryptedPrivateURI", publicURI: "publicURI" }));
+        secretNFT.mint(ISecretNFT.MintInputData({ to: address(3), hashPrivateURI: "hashPrivateURI", encryptedPrivateURI: "encryptedPrivateURI", publicURI: "publicURI", tokenId: 0 }));
         assertEq(secretNFT.balanceOf(address(3)), 1);
     }
 
     function testMintBatch() public {
         ISecretNFT.MintInputData[] memory mintInputData = new ISecretNFT.MintInputData[](2);
-        mintInputData[0] = ISecretNFT.MintInputData({ to: address(3), hashPrivateURI: "hashPrivateURI", encryptedPrivateURI: "encryptedPrivateURI", publicURI: "publicURI" });
-        mintInputData[1] = ISecretNFT.MintInputData({ to: address(3), hashPrivateURI: "hashPrivateURI", encryptedPrivateURI: "encryptedPrivateURI", publicURI: "publicURI" });
+        mintInputData[0] = ISecretNFT.MintInputData({ to: address(3), hashPrivateURI: "hashPrivateURI", encryptedPrivateURI: "encryptedPrivateURI", publicURI: "publicURI", tokenId: 0 });
+        mintInputData[1] = ISecretNFT.MintInputData({ to: address(3), hashPrivateURI: "hashPrivateURI", encryptedPrivateURI: "encryptedPrivateURI", publicURI: "publicURI", tokenId: 0 });
         vm.startPrank(address(1)); // Change the caller to address(1) 
         vm.expectRevert(); // Next line should fail
         secretNFT.mintBatch(mintInputData);
@@ -60,7 +60,7 @@ contract SecretNFTTest is Test {
     }
 
     function testUpdateEncryptedPrivateURI() public {
-        secretNFT.mint(ISecretNFT.MintInputData({ to: address(5), hashPrivateURI: "hashPrivateURI", encryptedPrivateURI: "encryptedPrivateURI", publicURI: "publicURI" }));
+        secretNFT.mint(ISecretNFT.MintInputData({ to: address(5), hashPrivateURI: "hashPrivateURI", encryptedPrivateURI: "encryptedPrivateURI", publicURI: "publicURI", tokenId: 0 }));
         assertEq(secretNFT.balanceOf(address(5)), 1);
         vm.expectRevert(); // Next line should fail
         secretNFT.setEncryptedPrivateURI(1, "newHashPrivateURI", "newEncryptedPrivateURI");
@@ -74,7 +74,7 @@ contract SecretNFTTest is Test {
     }
 
     function testSendEncryptedPrivateURI() public {
-        secretNFT.mint(ISecretNFT.MintInputData({ to: address(5), hashPrivateURI: "hashPrivateURI", encryptedPrivateURI: "encryptedPrivateURI", publicURI: "publicURI" }));
+        secretNFT.mint(ISecretNFT.MintInputData({ to: address(5), hashPrivateURI: "hashPrivateURI", encryptedPrivateURI: "encryptedPrivateURI", publicURI: "publicURI", tokenId: 0 }));
         assertEq(secretNFT.balanceOf(address(5)), 1);
         vm.expectRevert(); // Next line should fail
         secretNFT.safeTransferFrom("newEncryptedPrivateURI2", address(5), address(6), 1);
@@ -90,7 +90,7 @@ contract SecretNFTTest is Test {
 
 
     function testSendEncryptedPrivateURIMethod2() public {
-        secretNFT.mint(ISecretNFT.MintInputData({ to: address(5), hashPrivateURI: "hashPrivateURI", encryptedPrivateURI: "encryptedPrivateURI", publicURI: "publicURI" }));
+        secretNFT.mint(ISecretNFT.MintInputData({ to: address(5), hashPrivateURI: "hashPrivateURI", encryptedPrivateURI: "encryptedPrivateURI", publicURI: "publicURI", tokenId: 0}));
         assertEq(secretNFT.balanceOf(address(5)), 1);
         vm.expectRevert(); // Next line should fail
         secretNFT.transferFrom("newEncryptedPrivateURI2", address(5), address(6), 1);

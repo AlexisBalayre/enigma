@@ -66,13 +66,13 @@ contract FactoryTest is Test {
         // Perform minting operations
         vm.startPrank(address(2));
         vm.expectRevert();
-        collection1.mint(ISecretNFT.MintInputData({ to: address(3), hashPrivateURI: "hashPrivateURI", encryptedPrivateURI: "encryptedPrivateURI", publicURI: "publicURI" }));
-        collection2.mint(ISecretNFT.MintInputData({ to: address(3), hashPrivateURI: "hashPrivateURI", encryptedPrivateURI: "encryptedPrivateURI", publicURI: "publicURI" }));
+        collection1.mint(ISecretNFT.MintInputData({ to: address(3), hashPrivateURI: "hashPrivateURI", encryptedPrivateURI: "encryptedPrivateURI", publicURI: "publicURI", tokenId: 0 }));
+        collection2.mint(ISecretNFT.MintInputData({ to: address(3), hashPrivateURI: "hashPrivateURI", encryptedPrivateURI: "encryptedPrivateURI", publicURI: "publicURI", tokenId: 0 }));
         vm.stopPrank();
         vm.startPrank(address(1));
-        collection1.mint(ISecretNFT.MintInputData({ to: address(3), hashPrivateURI: "hashPrivateURI", encryptedPrivateURI: "encryptedPrivateURI", publicURI: "publicURI" }));
+        collection1.mint(ISecretNFT.MintInputData({ to: address(3), hashPrivateURI: "hashPrivateURI", encryptedPrivateURI: "encryptedPrivateURI", publicURI: "publicURI", tokenId: 0 }));
         vm.expectRevert();
-        collection2.mint(ISecretNFT.MintInputData({ to: address(3), hashPrivateURI: "hashPrivateURI", encryptedPrivateURI: "encryptedPrivateURI", publicURI: "publicURI" }));
+        collection2.mint(ISecretNFT.MintInputData({ to: address(3), hashPrivateURI: "hashPrivateURI", encryptedPrivateURI: "encryptedPrivateURI", publicURI: "publicURI", tokenId: 0 }));
         vm.stopPrank();
         assertEq(collection1.balanceOf(address(3)), 1);
         assertEq(collection2.balanceOf(address(3)), 1);
