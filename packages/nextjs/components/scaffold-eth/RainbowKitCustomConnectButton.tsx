@@ -9,6 +9,7 @@ import {
   ArrowsRightLeftIcon,
   CheckCircleIcon,
   ChevronDownIcon,
+  ChevronUpIcon,
   DocumentDuplicateIcon,
   QrCodeIcon,
 } from "@heroicons/react/24/outline";
@@ -26,6 +27,7 @@ export const RainbowKitCustomConnectButton = () => {
   const { disconnect } = useDisconnect();
   const { switchNetwork } = useSwitchNetwork();
   const [addressCopied, setAddressCopied] = useState(false);
+  const [toggle, setToggle] = useState<boolean>(false);
 
   return (
     <ConnectButton.Custom>
@@ -40,45 +42,71 @@ export const RainbowKitCustomConnectButton = () => {
             {(() => {
               if (!connected) {
                 return (
-                  <button className="btn btn-primary btn-sm" onClick={openConnectModal} type="button">
-                    Connect Wallet
+                  <button
+                    className="flex flex-row space-x-2 rounded-md bg-sky-500 px-12 py-5"
+                    onClick={openConnectModal}
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-6 h-6"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M21 12a2.25 2.25 0 00-2.25-2.25H15a3 3 0 11-6 0H5.25A2.25 2.25 0 003 12m18 0v6a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 18v-6m18 0V9M3 12V9m18 0a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 9m18 0V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v3"
+                      />
+                    </svg>
+                    <span>Connect Wallet</span>
                   </button>
                 );
               }
 
               if (chain.unsupported || chain.id !== configuredNetwork.id) {
                 return (
-                  <div className="dropdown dropdown-end">
-                    <label tabIndex={0} className="btn btn-error btn-sm dropdown-toggle gap-1">
-                      <span>Wrong network</span>
-                      <ChevronDownIcon className="h-6 w-4 ml-2 sm:ml-0" />
-                    </label>
-                    <ul
+                  <div className="relative rounded-md bg-sky-500 px-12 py-5">
+                    {toggle && (
+                      <ul
+                        tabIndex={0}
+                        className="absolute top-[-120px] left-4 -z-1 p-2 px-6 mt-4 bg-sky-700 rounded-md"
+                      >
+                        <li>
+                          <button
+                            className="flex py-3 gap-3"
+                            type="button"
+                            onClick={() => switchNetwork?.(configuredNetwork.id)}
+                          >
+                            <ArrowsRightLeftIcon className="h-6 w-4 ml-2 sm:ml-0" />
+                            <span className="whitespace-nowrap">
+                              Switch to <span style={{ color: networkColor }}>{configuredNetwork.name}</span>
+                            </span>
+                          </button>
+                        </li>
+                        <li>
+                          <button className="text-error flex gap-3 py-3" type="button" onClick={() => disconnect()}>
+                            <ArrowLeftOnRectangleIcon className="h-6 w-4 ml-2 sm:ml-0" /> <span>Disconnect</span>
+                          </button>
+                        </li>
+                      </ul>
+                    )}
+                    <button
                       tabIndex={0}
-                      className="dropdown-content menu p-2 mt-1 shadow-center shadow-accent bg-base-200 rounded-box gap-1"
+                      className="flex flex-row items-center space-x-2 z-20"
+                      type="button"
+                      onClick={() => {
+                        setToggle(ex => !ex);
+                      }}
                     >
-                      <li>
-                        <button
-                          className="btn-sm !rounded-xl flex py-3 gap-3"
-                          type="button"
-                          onClick={() => switchNetwork?.(configuredNetwork.id)}
-                        >
-                          <ArrowsRightLeftIcon className="h-6 w-4 ml-2 sm:ml-0" />
-                          <span className="whitespace-nowrap">
-                            Switch to <span style={{ color: networkColor }}>{configuredNetwork.name}</span>
-                          </span>
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                          className="menu-item text-error btn-sm !rounded-xl flex gap-3 py-3"
-                          type="button"
-                          onClick={() => disconnect()}
-                        >
-                          <ArrowLeftOnRectangleIcon className="h-6 w-4 ml-2 sm:ml-0" /> <span>Disconnect</span>
-                        </button>
-                      </li>
-                    </ul>
+                      <span>Wrong Network!</span>
+                      {toggle ? (
+                        <ChevronUpIcon className="h-6 w-4 ml-2" />
+                      ) : (
+                        <ChevronDownIcon className="h-6 w-4 ml-2" />
+                      )}
+                    </button>
                   </div>
                 );
               }
@@ -100,68 +128,70 @@ export const RainbowKitCustomConnectButton = () => {
                       <span className="ml-2 mr-1">{account.displayName}</span>
                       <ChevronDownIcon className="h-6 w-4 ml-2 sm:ml-0" />
                     </label>
-                    <ul
-                      tabIndex={0}
-                      className="dropdown-content menu z-[2] p-2 mt-2 shadow-center shadow-accent bg-base-200 rounded-box gap-1"
-                    >
-                      <li>
-                        {addressCopied ? (
-                          <div className="btn-sm !rounded-xl flex gap-3 py-3">
-                            <CheckCircleIcon
-                              className="text-xl font-normal h-6 w-4 cursor-pointer ml-2 sm:ml-0"
-                              aria-hidden="true"
-                            />
-                            <span className=" whitespace-nowrap">Copy address</span>
-                          </div>
-                        ) : (
-                          <CopyToClipboard
-                            text={account.address}
-                            onCopy={() => {
-                              setAddressCopied(true);
-                              setTimeout(() => {
-                                setAddressCopied(false);
-                              }, 800);
-                            }}
-                          >
+                    {toggle && (
+                      <ul
+                        tabIndex={0}
+                        className="dropdown-content menu z-[2] p-2 mt-2 shadow-center shadow-accent bg-base-200 rounded-box gap-1"
+                      >
+                        <li>
+                          {addressCopied ? (
                             <div className="btn-sm !rounded-xl flex gap-3 py-3">
-                              <DocumentDuplicateIcon
+                              <CheckCircleIcon
                                 className="text-xl font-normal h-6 w-4 cursor-pointer ml-2 sm:ml-0"
                                 aria-hidden="true"
                               />
                               <span className=" whitespace-nowrap">Copy address</span>
                             </div>
-                          </CopyToClipboard>
-                        )}
-                      </li>
-                      <li>
-                        <label htmlFor="qrcode-modal" className="btn-sm !rounded-xl flex gap-3 py-3">
-                          <QrCodeIcon className="h-6 w-4 ml-2 sm:ml-0" />
-                          <span className="whitespace-nowrap">View QR Code</span>
-                        </label>
-                      </li>
-                      <li>
-                        <button className="menu-item btn-sm !rounded-xl flex gap-3 py-3" type="button">
-                          <ArrowTopRightOnSquareIcon className="h-6 w-4 ml-2 sm:ml-0" />
-                          <a
-                            target="_blank"
-                            href={blockExplorerAddressLink}
-                            rel="noopener noreferrer"
-                            className="whitespace-nowrap"
+                          ) : (
+                            <CopyToClipboard
+                              text={account.address}
+                              onCopy={() => {
+                                setAddressCopied(true);
+                                setTimeout(() => {
+                                  setAddressCopied(false);
+                                }, 800);
+                              }}
+                            >
+                              <div className="btn-sm !rounded-xl flex gap-3 py-3">
+                                <DocumentDuplicateIcon
+                                  className="text-xl font-normal h-6 w-4 cursor-pointer ml-2 sm:ml-0"
+                                  aria-hidden="true"
+                                />
+                                <span className=" whitespace-nowrap">Copy address</span>
+                              </div>
+                            </CopyToClipboard>
+                          )}
+                        </li>
+                        <li>
+                          <label htmlFor="qrcode-modal" className="btn-sm !rounded-xl flex gap-3 py-3">
+                            <QrCodeIcon className="h-6 w-4 ml-2 sm:ml-0" />
+                            <span className="whitespace-nowrap">View QR Code</span>
+                          </label>
+                        </li>
+                        <li>
+                          <button className="menu-item btn-sm !rounded-xl flex gap-3 py-3" type="button">
+                            <ArrowTopRightOnSquareIcon className="h-6 w-4 ml-2 sm:ml-0" />
+                            <a
+                              target="_blank"
+                              href={blockExplorerAddressLink}
+                              rel="noopener noreferrer"
+                              className="whitespace-nowrap"
+                            >
+                              View on Block Explorer
+                            </a>
+                          </button>
+                        </li>
+                        <li>
+                          <button
+                            className="menu-item text-error btn-sm !rounded-xl flex gap-3 py-3"
+                            type="button"
+                            onClick={() => disconnect()}
                           >
-                            View on Block Explorer
-                          </a>
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                          className="menu-item text-error btn-sm !rounded-xl flex gap-3 py-3"
-                          type="button"
-                          onClick={() => disconnect()}
-                        >
-                          <ArrowLeftOnRectangleIcon className="h-6 w-4 ml-2 sm:ml-0" /> <span>Disconnect</span>
-                        </button>
-                      </li>
-                    </ul>
+                            <ArrowLeftOnRectangleIcon className="h-6 w-4 ml-2 sm:ml-0" /> <span>Disconnect</span>
+                          </button>
+                        </li>
+                      </ul>
+                    )}
                   </div>
                   <div>
                     <input type="checkbox" id="qrcode-modal" className="modal-toggle" />
