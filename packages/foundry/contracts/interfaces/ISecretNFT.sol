@@ -27,12 +27,14 @@ interface ISecretNFT is IERC721 {
 
     /**
      * @notice Struct defining the input data used in the mint function.
+     * @param tokenId The ID of the NFT to mint.
      * @param to The address to mint the NFT to.
      * @param hashPrivateURI The hash of the private URI of the NFT.
      * @param encryptedPrivateURI The encrypted private URI of the NFT.
      * @param publicURI The public URI of the NFT.
      */
     struct MintInputData {
+        uint256 tokenId;
         address to;
         bytes32 hashPrivateURI;
         bytes encryptedPrivateURI;
@@ -55,7 +57,11 @@ interface ISecretNFT is IERC721 {
     error NullValue();
 
     /// @notice This event is emitted when a new NFT is minted
-    event TokenMinted(uint256 indexed tokenID, address indexed owner, Metadata metadata);
+    event TokenMinted(
+        uint256 indexed tokenID,
+        address indexed owner,
+        Metadata metadata
+    );
     /// @notice This event is emitted when the metadata of an NFT is updated
     event TokenMetadataUpdated(uint256 indexed tokenID, Metadata newMetadata);
 
@@ -116,7 +122,11 @@ interface ISecretNFT is IERC721 {
     )
         external
         view
-        returns (bytes memory encryptedPrivateURI, bytes32 hashPrivateURI, bytes32 originalHashPrivateURI);
+        returns (
+            bytes memory encryptedPrivateURI,
+            bytes32 hashPrivateURI,
+            bytes32 originalHashPrivateURI
+        );
 
     /**
      * @notice Transfers the ownership of a token from one address to another address.
@@ -147,4 +157,13 @@ interface ISecretNFT is IERC721 {
         address _to,
         uint256 _tokenId
     ) external;
+
+    /**
+     * @notice Returns the metadata of the token.
+     * @param _tokenId The ID of the token to get the owner of.
+     * @return metadata The metadata of the token.
+     */
+    function getTokenMetadata(
+        uint256 _tokenId
+    ) external view returns (Metadata memory metadata);
 }

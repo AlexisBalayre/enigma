@@ -87,7 +87,11 @@ contract SecretNFT is ISecretNFT, ERC721Upgradeable {
         }
 
         // Gets the next token ID.
-        _tokenId = _nextTokenId++;
+        if (_inputData.tokenId != 0 && _ownerOf(_inputData.tokenId) == address(0)) {
+            _tokenId = _inputData.tokenId;
+        } else {
+            _tokenId = _nextTokenId++;
+        }
 
         // Mints the token.
         _safeMint(_inputData.to, _tokenId);
@@ -233,5 +237,24 @@ contract SecretNFT is ISecretNFT, ERC721Upgradeable {
         encryptedPrivateURI = tokenMetadata[_tokenId].encryptedPrivateURI;
         hashPrivateURI = tokenMetadata[_tokenId].hashPrivateURI;
         originalHashPrivateURI = tokenMetadata[_tokenId].originalHashPrivateURI;
+    }
+
+    /**
+     * @notice Returns the metadata of the token.
+     * @param _tokenId The ID of the token to get the owner of.
+     * @return metadata The metadata of the token.
+     */
+    function getTokenMetadata(
+        uint256 _tokenId
+    )
+        external
+        view
+        returns (Metadata memory metadata)
+    {
+        // Reverts if the token does not exist.
+        if (_ownerOf(_tokenId) == address(0)) {
+            revert WrongTokenId(_tokenId);
+        }
+        metadata = tokenMetadata[_tokenId];
     }
 }
