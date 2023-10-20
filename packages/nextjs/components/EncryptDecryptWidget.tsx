@@ -2,12 +2,20 @@ import React, { use, useCallback, useState } from "react";
 import encryptWithLit, { LitEncryptionDTO } from "../model/LitEncryption";
 import { ethers } from "ethers";
 import { useAccount } from "wagmi";
+import { useScaffoldContractWrite } from "~~/hooks/scaffold-eth";
 import { decryptWithLit } from "~~/model/LitDecryption";
 import scaffoldConfig from "~~/scaffold.config";
 
 const inputStyle = {
   color: "black",
 };
+
+// struct MintInputData {
+//   address to;
+//   bytes32 hashPrivateURI;
+//   bytes encryptedPrivateURI;
+//   bytes publicURI;
+// }
 
 const EncryptDecryptComponent: React.FC = () => {
   const [decryptText, setDecryptText] = useState("");
@@ -18,7 +26,15 @@ const EncryptDecryptComponent: React.FC = () => {
   const [litEncryptionDto, setLitEncryptionDto] = useState<LitEncryptionDTO | undefined>(undefined);
   const targetChain = "mumbai"; //scaffoldConfig.targetNetwork.network;
   const targetChainId = scaffoldConfig.targetNetwork.id;
-  const wrtieContract = useWriteContract();
+
+  const { writeAsync, isLoading } = useScaffoldContractWrite({
+    contractName: "SecretNFT",
+    functionName: "mint",
+    args: [],
+    onBlockConfirmation: txnReceipt => {
+      console.log("📦 Transaction blockHash", txnReceipt.blockHash);
+    },
+  });
 
   const encryptUriHandler = useCallback(async () => {
     if (typeof window.ethereum !== "undefined") {
@@ -32,13 +48,24 @@ const EncryptDecryptComponent: React.FC = () => {
       );
       setEncryptedUri(litEncryption.ciphertext);
       setLitEncryptionDto(litEncryption);
-      // ... rest of your code that uses the provider
+
+      const mintArgs = [
+        address || "",
+        litEncryption.dataToEncryptHash,
+        litEncryption.ciphertext,
+        "", // this is for publicURI which you've set as an empty string.
+      ];
+
+      try {
+        const txReciept = await writeAsync({ args: mintArgs }); // Now we just pass mintArgs directly
+        console.log("📦 Transaction blockHash", txReciept);
+      } catch (error) {
+        console.error("⚡️ ~ file: EncryptDecryptWidget.tsx:encryptUriHandler ~ error", error);
+      }
     } else {
       console.error("Ethereum provider (e.g., MetaMask) not detected");
     }
   }, [uriStr, targetChain, targetChainId, address]);
-
-  const tokenId = await contract.methods.mint(mockMintInputData).send({ from: "0xYourMinterAddressHere" });
 
   const decryptURIHandler = useCallback(async () => {
     if (typeof window.ethereum !== "undefined") {
