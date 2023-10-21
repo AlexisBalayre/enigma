@@ -25,12 +25,8 @@
     "blo": "~1.0.1",
     "bootswatch": "^5.3.2",
     "daisyui": "~3.5.1",
-<<<<<<< HEAD
     "lit-js-sdk": "^1.1.250",
-    "next": "~13.1.6",
-=======
     "next": "^13.5.6",
->>>>>>> 85df6fff8dfd0069b9d2d8cff93db9d21ad405ce
     "nextjs-progressbar": "~0.0.16",
     "qrcode.react": "~3.1.0",
     "react": "~18.2.0",
