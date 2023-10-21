@@ -11,3 +11,6 @@ node_modules
 .eslintcache
 .vscode/**
 .DS_Store
+tests/node_modules
+tests/.yarn
+tests/.env
