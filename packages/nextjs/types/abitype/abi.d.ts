@@ -11,3 +11,5 @@ declare module "abitype" {
     AddressType: string;
   }
 }
+
+declare module "*.png"

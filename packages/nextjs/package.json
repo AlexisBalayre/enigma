@@ -25,8 +25,12 @@
     "blo": "~1.0.1",
     "bootswatch": "^5.3.2",
     "daisyui": "~3.5.1",
+<<<<<<< HEAD
     "lit-js-sdk": "^1.1.250",
     "next": "~13.1.6",
+=======
+    "next": "^13.5.6",
+>>>>>>> 85df6fff8dfd0069b9d2d8cff93db9d21ad405ce
     "nextjs-progressbar": "~0.0.16",
     "qrcode.react": "~3.1.0",
     "react": "~18.2.0",
@@ -43,7 +47,7 @@
     "zustand": "~4.1.2"
   },
   "devDependencies": {
-    "@trivago/prettier-plugin-sort-imports": "~4.1.1",
+    "@trivago/prettier-plugin-sort-imports": "^1.4.4",
     "@types/node": "^17.0.45",
     "@types/react": "^18.0.21",
     "@types/react-copy-to-clipboard": "^5.0.4",
@@ -57,6 +61,6 @@
     "prettier": "~2.8.4",
     "tailwindcss": "~3.3.3",
     "typescript": "~5.1.6",
-    "vercel": "~28.15.1"
+    "vercel": "^32.3.0"
   }
 }

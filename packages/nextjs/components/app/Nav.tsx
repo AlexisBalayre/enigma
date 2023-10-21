@@ -1,6 +1,8 @@
 import { RainbowKitAuthenticationProvider } from "@rainbow-me/rainbowkit";
 import Link from "next/link";
 import { RainbowKitCustomConnectButton } from "../scaffold-eth";
+import Image from "next/image"; // Import the Image component
+import EnigmaLogo from "../../public/assets/EnigmaLogo.png";
 
 export function AppNavWrapper({ children }: { children: React.ReactNode }) {
   // the nav should be able to pass down a global wallet session state
@@ -10,7 +12,11 @@ export function AppNavWrapper({ children }: { children: React.ReactNode }) {
         <div className="flex flex-col h-full px-3 py-4 overflow-y-auto bg-gray-900">
           <div className="flex-grow overflow-y-auto bg-gray-900 px-3 py-4">
             <ul className="space-y-2 font-medium text-xl">
-              <li className="text-white font-bold text-3xl p-6">Enigma Logo</li>
+              <li className="text-white font-bold text-3xl p-6">
+                <div className="relative h-20 w-20">
+                  <Image src={EnigmaLogo} alt="Enigma Logo" layout="fill" objectFit="cover" objectPosition="0% 0%" />
+                </div>
+              </li>
               <li>
                 <Link href="/app" className="flex items-center p-2 rounded-lg text-white hover:bg-gray-700 group">
                   <svg
