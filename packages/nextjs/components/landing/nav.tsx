@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import EnigmaLogo from "../../public/assets/EnigmaLogo.png"; // Make sure this path is correct
 
 export function LandingNav() {
   const router = useRouter();
@@ -8,13 +9,16 @@ export function LandingNav() {
     e.stopPropagation();
     router.push("/app");
   };
+
   return (
     <nav className="fixed w-full z-20">
       <div className="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto py-6 px-12 mt-5 rounded-3xl bg-white/30 backdrop-blur-md border border-slate-500 overflow-clip">
         <div className="absolute top-[-30px] left-0 w-full h-8 bg-fuchsia-400/60 rounded-full filter blur-[25px]"></div>
         <div className="absolute top-[90px] left-0 w-full h-8 bg-sky-400/60 rounded-full filter blur-[25px]"></div>
         <Link href="/" className="flex items-center">
-          <span className="self-center text-2xl text-white font-semibold whitespace-nowrap">Enigma Logo</span>
+          <div className="self-center">
+            <Image src={EnigmaLogo} alt="Enigma Logo" width={100} height={100} />
+          </div>
         </Link>
         <div className="flex order-2 text-md">
           <button
