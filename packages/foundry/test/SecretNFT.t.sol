@@ -47,6 +47,17 @@ contract SecretNFTTest is Test {
         assertEq(secretNFT.balanceOf(address(3)), 1);
     }
 
+    function testMintUpload() public {
+        secretNFT.mint(ISecretNFT.MintInputData({ to: address(4), hashPrivateURI: "hashPrivateURI", encryptedPrivateURI: "encryptedPrivateURI", publicURI: "publicURI", tokenId: 0 }));
+        assertEq(secretNFT.balanceOf(address(4)), 1);
+        assertEq(secretNFT.exists(1), true);
+    }
+
+    function testMintNext() public {
+        secretNFT.mintNext(address(5));
+        assertEq(secretNFT.balanceOf(address(5)), 1);
+    }
+
     function testMintBatch() public {
         ISecretNFT.MintInputData[] memory mintInputData = new ISecretNFT.MintInputData[](2);
         mintInputData[0] = ISecretNFT.MintInputData({ to: address(3), hashPrivateURI: "hashPrivateURI", encryptedPrivateURI: "encryptedPrivateURI", publicURI: "publicURI", tokenId: 0 });
