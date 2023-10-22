@@ -37,7 +37,7 @@ export function AppNavWrapper({ children }: { children: React.ReactNode }) {
                 </Link>
               </li>
               <li>
-                <Link href="/app/inbox" className="flex items-center p-2 rounded-lg text-white hover:bg-gray-700 group">
+                <Link href="/app/explore" className="flex items-center p-2 rounded-lg text-white hover:bg-gray-700 group">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -59,7 +59,7 @@ export function AppNavWrapper({ children }: { children: React.ReactNode }) {
                 </Link>
               </li>
               <li>
-                <Link href="/app/mint" className="flex items-center p-2 rounded-lg text-white hover:bg-gray-700 group">
+                <Link href="/app/upload" className="flex items-center p-2 rounded-lg text-white hover:bg-gray-700 group">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
