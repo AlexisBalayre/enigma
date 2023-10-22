@@ -2,38 +2,43 @@
 
 ## Smart Contracts
 
+### Scroll Sepolia
 
-Scroll Sepolia
-https://sepolia.scrollscan.com/address/0x4E4692F47B04c027414C371e2f2Cb757F9D4A218
-https://sepolia.scrollscan.com/address/0x326abc5ac2d262965a244cf3c36c76bad76cbd49
-https://sepolia.scrollscan.com/address/0x0fa2CB7A48942B127E82C267Da49936b8DA78Ae1
+- **Secret NFT:** [0x4E4692F47B04c027414C371e2f2Cb757F9D4A218](https://sepolia.scrollscan.com/address/0x4E4692F47B04c027414C371e2f2Cb757F9D4A218)
+- **Factory:** [0x326abc5ac2d262965a244cf3c36c76bad76cbd49](https://sepolia.scrollscan.com/address/0x326abc5ac2d262965a244cf3c36c76bad76cbd49)
+- **Access Manager:** [0x0fa2CB7A48942B127E82C267Da49936b8DA78Ae1](https://sepolia.scrollscan.com/address/0x0fa2CB7A48942B127E82C267Da49936b8DA78Ae1)
+- **Bridge:** [0xdb34dfcd80a13a54773b87cbc4437070898d4bc5](https://sepolia.scrollscan.com/address/0xdb34dfcd80a13a54773b87cbc4437070898d4bc5)
 
-Polygon Mumbai:
-https://mumbai.polygonscan.com/address/0x4e4692f47b04c027414c371e2f2cb757f9d4a218#readContract
-https://mumbai.polygonscan.com/address/0x0fa2cb7a48942b127e82c267da49936b8da78ae1
-https://mumbai.polygonscan.com/address/0x80cA2510C773591B136FCF432916CFFAd96Fb8B7
-https://mumbai.polygonscan.com/address/0xf903c66d94adccc6dfa888742c2490a272ebdfb1
+### Polygon Mumbai
 
+- **Secret NFT:** [0xf903c66d94adccc6dfa888742c2490a272ebdfb1](https://mumbai.polygonscan.com/address/0xf903c66d94adccc6dfa888742c2490a272ebdfb1)
+- **Factory:** [0x326abc5ac2d262965a244cf3c36c76bad76cbd49](https://mumbai.polygonscan.com/address/0x326abc5ac2d262965a244cf3c36c76bad76cbd49)
+- **Access Manager:** [0x0fa2cb7a48942b127e82c267da49936b8da78ae1](https://mumbai.polygonscan.com/address/0x0fa2cb7a48942b127e82c267da49936b8da78ae1)
+- **Bridge:** [0x755bff58017aa5f62e9f071ca507509eba7a591d](https://mumbai.polygonscan.com/address/0x755bff58017aa5f62e9f071ca507509eba7a591d)
 
-Scroll Alpha:
-  SecretNFT: 0xe8E618A02773f0a217FCe6FdcBE467Fd9BBE940d
-  AccessManager: 0x5777D06998E0b666dE68C1F742656337F05C4181
-  Factory: 0xa59F33C2936D0F6535cB8A0d895727eC2D541648
-  Bridge: 0xACfD9F38b282cae022Cd71b8Fbaa93B7c419610E
+### Scroll Alpha
 
-Mantle Testnet:
-  SecretNFT: 0xe8E618A02773f0a217FCe6FdcBE467Fd9BBE940d
-  AccessManager: 0x5777D06998E0b666dE68C1F742656337F05C4181
-  Factory: 0xa59F33C2936D0F6535cB8A0d895727eC2D541648
-  Bridge: 0xACfD9F38b282cae022Cd71b8Fbaa93B7c419610E
+- **SecretNFT:** `0xe8E618A02773f0a217FCe6FdcBE467Fd9BBE940d`
+- **AccessManager:** `0x5777D06998E0b666dE68C1F742656337F05C4181`
+- **Factory:** `0xa59F33C2936D0F6535cB8A0d895727eC2D541648`
+- **Bridge:** `0xACfD9F38b282cae022Cd71b8Fbaa93B7c419610E`
 
-Sepolia:
-  SecretNFT: 0xe8E618A02773f0a217FCe6FdcBE467Fd9BBE940d
-  AccessManager: 0x5777D06998E0b666dE68C1F742656337F05C4181
-  Factory: 0xa59F33C2936D0F6535cB8A0d895727eC2D541648
-  Bridge: 0xACfD9F38b282cae022Cd71b8Fbaa93B7c419610E
+### Mantle Testnet
+
+- **SecretNFT:** `0xe8E618A02773f0a217FCe6FdcBE467Fd9BBE940d`
+- **AccessManager:** `0x5777D06998E0b666dE68C1F742656337F05C4181`
+- **Factory:** `0xa59F33C2936D0F6535cB8A0d895727eC2D541648`
+- **Bridge:** `0xACfD9F38b282cae022Cd71b8Fbaa93B7c419610E`
+
+### Sepolia
+
+- **SecretNFT:** `0xe8E618A02773f0a217FCe6FdcBE467Fd9BBE940d`
+- **AccessManager:** `0x5777D06998E0b666dE68C1F742656337F05C4181`
+- **Factory:** `0xa59F33C2936D0F6535cB8A0d895727eC2D541648`
+- **Bridge:** `0xACfD9F38b282cae022Cd71b8Fbaa93B7c419610E`
 
 ## Subgraph
+
 https://thegraph.com/hosted-service/subgraph/enigma-onlineeth2023/enigma-mumbai
 
 🧪 An open-source, up-to-date toolkit for building decentralized applications (dapps) on the Ethereum blockchain. It's designed to make it easier for developers to create and deploy smart contracts and build user interfaces that interact with those contracts.
