@@ -10,7 +10,7 @@ export default function Mint() {
       imageURL: '',
       functionality: '',
     },
-    onSubmit: (values) => {
+    onSubmit: (values: any) => {
       alert(JSON.stringify(values, null, 2));
     },
   });
