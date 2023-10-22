@@ -1,5 +1,17 @@
 # 🏗 Scaffold-ETH 2
 
+## Smart Contracts
+
+https://mumbai.polygonscan.com/address/0xf903c66d94adccc6dfa888742c2490a272ebdfb1
+https://sepolia.scrollscan.com/address/0x4E4692F47B04c027414C371e2f2Cb757F9D4A218
+https://sepolia.scrollscan.com/address/0x326abc5ac2d262965a244cf3c36c76bad76cbd49
+https://sepolia.scrollscan.com/address/0x0fa2CB7A48942B127E82C267Da49936b8DA78Ae1
+https://mumbai.polygonscan.com/address/0x4e4692f47b04c027414c371e2f2cb757f9d4a218#readContract
+https://mumbai.polygonscan.com/address/0x0fa2cb7a48942b127e82c267da49936b8da78ae1
+
+## Subgraph
+https://thegraph.com/hosted-service/subgraph/enigma-onlineeth2023/enigma-mumbai
+
 🧪 An open-source, up-to-date toolkit for building decentralized applications (dapps) on the Ethereum blockchain. It's designed to make it easier for developers to create and deploy smart contracts and build user interfaces that interact with those contracts.
 
 ⚙️ Built using NextJS, RainbowKit, Hardhat, Wagmi, and Typescript.
