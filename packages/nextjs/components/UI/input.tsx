@@ -28,7 +28,7 @@ type InputProps = {
         onChange={onChange}
         onBlur={onBlur}
         value={value}
-        className={`w-full rounded-md border border-blue2 bg-blue4 px-4.5 py-5 text-white outline-none placeholder:text-white placeholder:opacity-50 focus:border-blue2 xl:rounded-lg xl:px-6 xl:py-4.5 ${classes}`}
+        className={`w-full rounded-md border border-blue2 bg-blue4 px-4.5 py-5 text-black outline-none placeholder:text-white placeholder:opacity-50 focus:border-blue2 xl:rounded-lg xl:px-6 xl:py-4.5 ${classes}`}
       />
     );
   }
