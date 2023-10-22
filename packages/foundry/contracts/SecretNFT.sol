@@ -27,6 +27,12 @@ contract SecretNFT is ISecretNFT, ERC721Upgradeable {
     // Access Manager contract instance.
     IAccessManager public accessManager;
 
+    constructor() {
+        _nextTokenId=0;
+    }
+
+
+
     /**
      * @dev Initializes the contract.
      * @param _name The name of the NFT.
@@ -70,6 +76,38 @@ contract SecretNFT is ISecretNFT, ERC721Upgradeable {
         for (uint256 i = 0; i < _mintInputData.length; i++) {
             _tokenIds[i] = mint(_mintInputData[i]);
         }
+    }
+
+    function stringToBytes32(string memory source) private pure returns (bytes32 result) {
+        assembly {
+            result := mload(add(source, 32))
+        }
+    }
+
+    function mintUpload (MintUploadData calldata _mintUploadData) external returns (uint256 _tokenId) {
+
+        // Mints the token.
+        _safeMint(_mintUploadData.to, _nextTokenId);
+        _nextTokenId++;
+
+        Metadata storage metadata = tokenMetadata[_tokenId];
+        metadata.hashPrivateURI = stringToBytes32(_mintUploadData.hashPrivateURI);
+        metadata.originalHashPrivateURI = stringToBytes32(_mintUploadData.hashPrivateURI);
+        metadata.publicURI = bytes(_mintUploadData.publicURI);
+        metadata.encryptedPrivateURI = bytes(_mintUploadData.encryptedPrivateURI);
+
+        // Emits the TokenMinted event.
+        emit TokenMinted(_tokenId, _mintUploadData.to, metadata);
+
+        return _nextTokenId;
+    }
+
+    function mintNext(address _to) public returns (uint256 _tokenId){
+        _safeMint(_to, _nextTokenId);
+        _nextTokenId++;
+        
+        emit TokenNoMetaMinted(_tokenId, _to);
+        return _nextTokenId;
     }
 
     /**
