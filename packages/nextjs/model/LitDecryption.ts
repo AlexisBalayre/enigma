@@ -1,4 +1,4 @@
-import { accessControlConditionsNFT } from "./mock/AccessControl";
+import { accessControlConditionsNFT } from "./LitConditions";
 import { ethConnect } from "@lit-protocol/lit-node-client";
 import * as LitJsSdk from "@lit-protocol/lit-node-client";
 
@@ -32,9 +32,6 @@ export async function decryptWithLit(
   const privateURIDecrypted = await LitJsSdk.decryptToString(
     {
       accessControlConditions: accessControlConditionsNFT,
-      evmContractConditions: [],
-      solRpcConditions: [],
-      unifiedAccessControlConditions: [],
       ciphertext: encryptedPrivateURI, // Encrypted private URI
       dataToEncryptHash: hashPrivateURI, // Hash of the private URI
       authSig,

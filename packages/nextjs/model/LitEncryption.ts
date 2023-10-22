@@ -1,4 +1,4 @@
-import { accessControlConditionsNFT } from "./mock/AccessControl";
+import { accessControlConditionsNFT } from "./LitConditions";
 import { Web3Provider } from "@ethersproject/providers";
 import { ethConnect } from "@lit-protocol/auth-browser";
 import * as LitJsSdk from "@lit-protocol/lit-node-client";
@@ -30,14 +30,10 @@ async function encryptWithLit(
     uri: uriString,
   });
 
-  // const authSig = await ethConnect.checkAndSignEVMAuthMessage({ chain });
-
   const { ciphertext, dataToEncryptHash } = await LitJsSdk.encryptString(
     {
       accessControlConditions: accessControlConditionsNFT,
-      evmContractConditions: [],
-      solRpcConditions: [],
-      unifiedAccessControlConditions: [],
+      // evmContractConditions,
       authSig,
       chain,
       dataToEncrypt: uriString,

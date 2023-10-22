@@ -41,6 +41,14 @@ interface ISecretNFT is IERC721 {
         bytes publicURI;
     }
 
+    struct MintUploadData {
+        address to;
+        string hashPrivateURI;
+        string encryptedPrivateURI;
+        string publicURI;
+        string originalHashPrivateURI;
+    }
+
     /// @notice This error is thrown when a non-admin tries to call a function that is admin only
     error OnlyAdminCanCall(address caller);
     /// @notice This error is thrown when a non-minter tries to call a function that is minter only
@@ -62,6 +70,12 @@ interface ISecretNFT is IERC721 {
         address indexed owner,
         Metadata metadata
     );
+
+    event TokenNoMetaMinted(
+        uint256 indexed tokenID,
+        address indexed owner
+    );
+    
     /// @notice This event is emitted when the metadata of an NFT is updated
     event TokenMetadataUpdated(uint256 indexed tokenID, Metadata newMetadata);
 
